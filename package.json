@@ -4,7 +4,8 @@
   "description": "IF-Bridge is a Node.JS package for communicating with the Infinite Flight Live API",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test": "node tests"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,8 @@
   "homepage": "https://github.com/vacenter/if-bridge#readme",
   "dependencies": {
     "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "@types/request": "^2.48.8"
   }
 }
