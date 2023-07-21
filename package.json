@@ -1,0 +1,26 @@
+{
+  "name": "ifbridge",
+  "version": "1.0.0",
+  "description": "IF-Bridge is a Node.JS package for communicating with the Infinite Flight Live API",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vacenter/if-bridge.git"
+  },
+  "keywords": [
+    "IF",
+    "VACenter"
+  ],
+  "author": "VACenter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vacenter/if-bridge/issues"
+  },
+  "homepage": "https://github.com/vacenter/if-bridge#readme",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}
