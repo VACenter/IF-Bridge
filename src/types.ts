@@ -71,6 +71,29 @@ export type frequency = {
     startTime: string,
 }
 
+export type user = {
+    onlineFlights: number,
+    violations: number,
+    xp: number,
+    landingCount: number,
+    flightTime: number,
+    atcOperations: number,
+    atcRank: number,
+    grade: number,
+    hash: string,
+    violationCountByLevel: {
+        level1: number,
+        level2: number,
+        level3: number,
+    },
+    roles: number[],
+    userId: string,
+    virtualOrganization: string|null,
+    discourseName: string,
+    groups: string[],
+    errorCode: number,
+}
+
 export type ifbridgeResponse = {
     path: string,
     result: any[]|Object,
