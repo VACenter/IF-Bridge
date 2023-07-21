@@ -59,6 +59,18 @@ export type flightPlan = {
     flightPlanItems: flightPlanItem[]
 }
 
+export type frequency = {
+    frequencyId: string,
+    userId: string,
+    username: string,
+    virtualOrganization: string|null,
+    airportName: string,
+    type: number,
+    latitude: number,
+    longitude: number,
+    startTime: string,
+}
+
 export type ifbridgeResponse = {
     path: string,
     result: any[]|Object,
