@@ -2,7 +2,9 @@
 
 import request from 'request';
 import { parseErrorCode } from './liveParser';
-import sessions from './servers/main';
+import sessions from './sessions/main';
+import flights from './flights/main';
+import * as types from './types';
 
 let IFKey:string|null = null;
 
@@ -13,5 +15,7 @@ const setIFKey = (key: string) => {
 export {
     IFKey,
     setIFKey,
-    sessions
+    sessions,
+    flights,
+    types
 }
