@@ -1,2 +1,2 @@
 # IF-Bridge
-IF Bridge is an Infinite Flight API Client. Supporting both the Live &amp; Connect APIs.
+IF Bridge is an Infinite Flight API Client. Supporting the Live API.
