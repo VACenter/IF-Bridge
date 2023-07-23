@@ -1,7 +1,7 @@
 import request from 'request';
 import { parseErrorCode } from '../liveParser';
 import { IFKey } from '../index';
-import { ifResponse } from '../types'
+import { ifResponse, flight } from '../types'
 
 const getAll = (sessionId:string) => {
     return new Promise((resolve, reject) => {
@@ -22,7 +22,7 @@ const getAll = (sessionId:string) => {
                         if(handle.failed == false){
                             resolve({
                                 path: `/public/v2/sessions/${sessionId}/flights`,
-                                result: data.result
+                                result: data.result as flight[]
                             });
                         }else{
                             reject(handle);

@@ -1,13 +1,18 @@
 import request from 'request';
 import { parseErrorCode } from '../liveParser';
 import { IFKey } from '../index';
-import { ifResponse, userGrade } from '../types'
+import { ifResponse, session, airportStatus } from '../types'
 
-const getGrade = (userId: userGrade['userId']) => {
+const getStatus = (sessionId: session['id'], airportICAO: airportStatus['airportIcao']) => {
     return new Promise((resolve, reject) => {
+        if(airportICAO.length != 4){ 
+            reject({ failed: true, errorCode: null, errorMessage: "Invalid ICAO code" }); 
+            return;
+        }
+
         const options = {
             method: 'GET',
-            url: `https://api.infiniteflight.com/public/v2/users/${userId}`,
+            url: `https://api.infiniteflight.com/public/v2/sessions/${sessionId}/airport/${airportICAO.toUpperCase()}/status`,
             headers: { Authorization: `Bearer ${IFKey}` },
         };
 
@@ -21,9 +26,9 @@ const getGrade = (userId: userGrade['userId']) => {
                         const handle = parseErrorCode(data.errorCode);
                         if (handle.failed == false) {
                             resolve({
-                                path: `/public/v2/users/${userId}`,
-                                query: {userId: userId},
-                                result: data.result as userGrade
+                                path: `/public/v2/sessions/${sessionId}/airport/${airportICAO.toUpperCase() }/status`,
+                                query: { airportICAO: airportICAO.toUpperCase() },
+                                result: data.result as airportStatus
                             });
                         } else {
                             reject(handle);
@@ -59,4 +64,4 @@ const getGrade = (userId: userGrade['userId']) => {
 
 
 
-export default getGrade
+export default getStatus

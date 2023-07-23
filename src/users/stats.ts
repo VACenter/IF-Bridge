@@ -29,7 +29,7 @@ const getStats = (userIds: userStats['userId'][], discourseNames: userStats['dis
                             resolve({
                                 path: `/public/v2/users`,
                                 query: options.body,
-                                result: data.result
+                                result: data.result as userStats[]
                             });
                         } else {
                             reject(handle);

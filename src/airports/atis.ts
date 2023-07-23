@@ -1,13 +1,13 @@
 import request from 'request';
 import { parseErrorCode } from '../liveParser';
 import { IFKey } from '../index';
-import { ifResponse, userGrade } from '../types'
+import { ifResponse, session, userGrade } from '../types'
 
-const getGrade = (userId: userGrade['userId']) => {
+const getATIS = (sessionId: session['id'], airportICAO: string) => {
     return new Promise((resolve, reject) => {
         const options = {
             method: 'GET',
-            url: `https://api.infiniteflight.com/public/v2/users/${userId}`,
+            url: `https://api.infiniteflight.com/public/v2/sessions/${sessionId}/airport/${airportICAO}/atis`,
             headers: { Authorization: `Bearer ${IFKey}` },
         };
 
@@ -21,9 +21,9 @@ const getGrade = (userId: userGrade['userId']) => {
                         const handle = parseErrorCode(data.errorCode);
                         if (handle.failed == false) {
                             resolve({
-                                path: `/public/v2/users/${userId}`,
-                                query: {userId: userId},
-                                result: data.result as userGrade
+                                path: `/public/v2/sessions/${sessionId}/airport/${airportICAO}/atis`,
+                                query: {airportICAO: airportICAO},
+                                result: data.result as string
                             });
                         } else {
                             reject(handle);
@@ -57,6 +57,4 @@ const getGrade = (userId: userGrade['userId']) => {
     });
 }
 
-
-
-export default getGrade
+export default getATIS

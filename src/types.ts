@@ -120,6 +120,27 @@ export type userGrade = {
     errorCode: number,
 }
 
+export type atcFacilities = {
+    frequencyId: string,
+    userId: string,
+    username: string,
+    virtualOrganization: string|null,
+    airportName: string,
+    type: number,
+    latitude: number,
+    longitude: number,
+    startTime: string,
+}
+
+export type airportStatus = {
+    airportIcao: string,
+    inboundFlightsCount: number,
+    inboundFlights: flight['flightId'][],
+    outboundFlightsCount: number,
+    outboundFlights: flight['flightId'][],
+    atcFacilities: atcFacilities
+}
+
 export type ifbridgeResponse = {
     path: string,
     result: any[]|Object,

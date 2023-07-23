@@ -1,7 +1,7 @@
 import request from 'request';
 import { parseErrorCode } from '../liveParser';
 import { IFKey } from '../index';
-import { ifResponse } from '../types'
+import { atcFacilities, ifResponse } from '../types'
 
 const getATC = (sessionId: string) => {
     return new Promise((resolve, reject) => {
@@ -22,7 +22,7 @@ const getATC = (sessionId: string) => {
                         if (handle.failed == false) {
                             resolve({
                                 path: `/public/v2/sessions/${sessionId}/atc`,
-                                result: data.result
+                                result: data.result as atcFacilities[]
                             });
                         } else {
                             reject(handle);

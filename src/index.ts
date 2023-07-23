@@ -5,6 +5,7 @@ import { parseErrorCode } from './liveParser';
 import sessions from './sessions/main';
 import flights from './flights/main';
 import users from './users/main';
+import airports from './airports/main';
 import * as types from './types';
 
 let IFKey:string|null = null;
@@ -19,5 +20,6 @@ export {
     sessions,
     flights,
     users,
+    airports,
     types
 }
