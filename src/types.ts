@@ -38,6 +38,15 @@ export type routePosition = {
     date: string
 }
 
+export type track = {
+    name: string,
+    path: string[],
+    eastLevels: number[]|null,
+    westLevels: number[]|null,
+    type: string,
+    lastSeen: string
+}
+
 export type flightPlanItem = {
     name: string,
     type: number,

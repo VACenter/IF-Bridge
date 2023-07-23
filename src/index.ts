@@ -6,6 +6,7 @@ import sessions from './sessions/main';
 import flights from './flights/main';
 import users from './users/main';
 import airports from './airports/main';
+import oceanicTracks from './oceanic';
 import * as types from './types';
 
 let IFKey:string|null = null;
@@ -21,5 +22,7 @@ export {
     flights,
     users,
     airports,
-    types
+    oceanicTracks,
+    types,
+    
 }
