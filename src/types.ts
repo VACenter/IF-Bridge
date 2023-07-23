@@ -71,7 +71,7 @@ export type frequency = {
     startTime: string,
 }
 
-export type user = {
+export type userStats = {
     onlineFlights: number,
     violations: number,
     xp: number,
@@ -81,6 +81,32 @@ export type user = {
     atcRank: number,
     grade: number,
     hash: string,
+    violationCountByLevel: {
+        level1: number,
+        level2: number,
+        level3: number,
+    },
+    roles: number[],
+    userId: string,
+    virtualOrganization: string|null,
+    discourseName: string,
+    groups: string[],
+    errorCode: number,
+}
+
+export type userGrade = {
+    totalXP: number,
+    total12MonthsViolations: number,
+    gradeDetails: {
+        grades: any[],
+        gradeIndex: number,
+        ruleDefinitions: any[],
+    },
+    atcOperations: number,
+    atcRank: number,
+    lastLevel1ViolationDate: string,
+    lastLevel2ViolationDate: string,
+    lastLevel3ViolationDate: string,
     violationCountByLevel: {
         level1: number,
         level2: number,

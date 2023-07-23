@@ -1,20 +1,14 @@
 import request from 'request';
 import { parseErrorCode } from '../liveParser';
 import { IFKey } from '../index';
-import { ifResponse, userStats } from '../types'
+import { ifResponse, userGrade } from '../types'
 
-const getStats = (userIds: userStats['userId'][], discourseNames: userStats['discourseName'][], userHashes: userStats['hash'][]) => {
+const getGrade = (userId: userGrade['userId']) => {
     return new Promise((resolve, reject) => {
         const options = {
-            method: 'POST',
-            url: `https://api.infiniteflight.com/public/v2/users`,
-            headers: { Authorization: `Bearer ${IFKey}`, 'Content-Type': 'application/json', },
-            body: {
-                userIds: userIds,
-                discourseNames: discourseNames,
-                userHashes: userHashes
-            },
-            json: true
+            method: 'GET',
+            url: `https://api.infiniteflight.com/public/v2/users/${userId}`,
+            headers: { Authorization: `Bearer ${IFKey}` },
         };
 
         request(options, function (error, response, body) {
@@ -28,7 +22,7 @@ const getStats = (userIds: userStats['userId'][], discourseNames: userStats['dis
                         if (handle.failed == false) {
                             resolve({
                                 path: `/public/v2/users`,
-                                query: options.body,
+                                query: {userId: userId},
                                 result: data.result
                             });
                         } else {
@@ -65,4 +59,4 @@ const getStats = (userIds: userStats['userId'][], discourseNames: userStats['dis
 
 
 
-export default getStats
+export default getGrade
